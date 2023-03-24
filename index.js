@@ -7,6 +7,25 @@ let deletePost = document.getElementsByClassName('fa-trash-alt')
 // Create an array with post objects
 let data = [{id: 1, content: 'First post'}, {id: 2, content: 'Second post'}]
 
+// Display existing posts on DomContentLoaded
+
+document.addEventListener('DOMContentLoaded', function(){
+    data.map(post =>{
+        console.log('Dom has been loaded')
+        const display =
+        `<div id="post">
+            <p>${post.content}</p>
+            <span class="options">
+                <i class="fas fa-edit"></i>
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </div>`
+
+        posts.innerHTML += display
+    })
+})
+
+
  
 
 // A function to handle submitting the Form
@@ -22,6 +41,7 @@ function handleFormSubmit(){
         newId = data.length +1
         let newPost = {id: newId, content: msg}
         create(newPost)
+        displayAddedPost(newPost)
     }
 }
 
@@ -34,23 +54,36 @@ function create(newPost){
 
 // Display mapped posts on the document
 
-const displayPosts = () =>{
-    // console.log(data)
-    data.map(post => {
-        // console.log(post)
-        const display =
-        `<div id="post">
-            <p>${post.content}</p>
+// const displayPosts = () =>{
+//     // console.log(data)
+//     data.map(post => {
+//         // console.log(post)
+//         const display =
+//         `<div id="post">
+//             <p>${post.content}</p>
+//             <span class="options">
+//                 <i class="fas fa-edit"></i>
+//                 <i class="fas fa-trash-alt"></i>
+//             </span>
+//         </div>`
+
+//         posts.innerHTML += display
+//     })
+
+
+// }
+
+const displayAddedPost = (newPost) =>{
+    const addedPost = 
+    `<div id="post">
+            <p>${newPost.content}</p>
             <span class="options">
                 <i class="fas fa-edit"></i>
                 <i class="fas fa-trash-alt"></i>
             </span>
-        </div>`
+    </div>`
 
-        posts.innerHTML += display
-    })
-
-
+    posts.innerHTML += addedPost
 }
    
 
