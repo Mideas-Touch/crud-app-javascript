@@ -40,6 +40,7 @@ function handleFormSubmit(){
         let newPost = {id: newId, content: msg}
         create(newPost)
         displayAddedPost(newPost)
+        textArea.value = ''
     }
 }
 
