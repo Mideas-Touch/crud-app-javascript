@@ -45,7 +45,7 @@ function handleFormSubmit(){
     }
 }
 
-
+// Create a newpost
 
 function create(newPost){
     data.push(newPost)
@@ -72,6 +72,9 @@ function create(newPost){
 
 
 // }
+
+
+// Display added post on submitting a post
 
 const displayAddedPost = (newPost) =>{
     const addedPost = 
