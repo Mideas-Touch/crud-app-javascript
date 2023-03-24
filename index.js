@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 
- 
-
 // A function to handle submitting the Form
 
 function handleFormSubmit(){
@@ -51,27 +49,6 @@ function create(newPost){
     data.push(newPost)
     console.log(data)
 }
-
-// Display mapped posts on the document
-
-// const displayPosts = () =>{
-//     // console.log(data)
-//     data.map(post => {
-//         // console.log(post)
-//         const display =
-//         `<div id="post">
-//             <p>${post.content}</p>
-//             <span class="options">
-//                 <i class="fas fa-edit"></i>
-//                 <i class="fas fa-trash-alt"></i>
-//             </span>
-//         </div>`
-
-//         posts.innerHTML += display
-//     })
-
-
-// }
 
 
 // Display added post on submitting a post
