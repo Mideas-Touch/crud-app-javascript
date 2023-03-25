@@ -68,7 +68,16 @@ const displayAddedPost = (newPost) =>{
 }
    
 
+// Update a post
 
+function update(id, updatedPost){
+    const index = data.findIndex(item => item.id === id);
+    data[index] = {...data[index], ...updatedPost};
+    // console.log(data[index])
+    // console.log(edit)
+    edit.addEventListener('click', showModal())
+
+}
 
 
 
