@@ -15,8 +15,10 @@ let data = [{id: 1, content: 'First post'}, {id: 2, content: 'Second post'}]
 // Display existing posts on DomContentLoaded
 
 document.addEventListener('DOMContentLoaded', function(){
+    console.log('Dom has been loaded')
+    console.log("Mapping existing posts..")
+
     data.map(post =>{
-        console.log('Dom has been loaded')
         const display =
         `<div id="post">
             <p>${post.content}</p>
@@ -27,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
         </div>`
 
         posts.innerHTML += display
+
+        console.log(data.length + " posts found")
 
         prepare(post)
 
@@ -58,6 +62,9 @@ function handleFormSubmit(){
 function create(newPost){
     data.push(newPost)
     console.log(data)
+
+// Also need to prepare newPost
+    prepare(newPost)
 }
 
 
@@ -109,14 +116,15 @@ const displayAddedPost = (newPost) =>{
 
 // Adding a function to get all the edit buttons
 
-function prepare(){
+const prepare = () =>{
+    console.log("Inside the prepare function")
     const editBtns = document.querySelectorAll("#editBtn");
     console.log(editBtns)
 
     // Add an event listener to each button
-    // editBtns.forEach(function(btn){
-    //     btn.addEventListener("click", showModal());
-    // })
+    editBtns.forEach(function(btn){
+        btn.addEventListener("click", showModal(btn));
+    })
 }
 
    
@@ -142,10 +150,19 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(editablePostIndex){
-    console.log('edit clicked')
-    const modal = document.getElementById("myModal");
-    const closeModal = modal.querySelector(".close")
+function showModal(btn){
+    // console.log('edit clicked')
+    console.log('Inside the showModal function')
+    // const modal = document.getElementById("myModal");
+
+    // Get the post ID from the button's data-id attribute
+    const postId = btn.getAttribute("data-id");
+    console.log(postId)
+
+    // Get the corresponding modal element
+    const modal = document.getElementById("myModal" + postId);
+
+    // const closeModal = modal.querySelector(".close")
 
     if (editablePostIndex){
         const modalContent =
