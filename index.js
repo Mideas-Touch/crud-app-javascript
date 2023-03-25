@@ -4,6 +4,11 @@ let posts = document.getElementById('posts-list')
 let deletePost = document.getElementsByClassName('fa-trash-alt')
 
 
+// I figure that I'll have to add an event listener to every post when creating them. My initial thought was to add it here but I think I'll do it soon as we fetch existing posts.
+// I also figure that I'll have to add the event listener once a new post is created.
+// I think doing this will make the prepare and makePostEditable functions redundant.
+
+
 // Create an array with post objects
 let data = [{id: 1, content: 'First post'}, {id: 2, content: 'Second post'}]
 
@@ -22,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function(){
         </div>`
 
         posts.innerHTML += display
+
+
     })
 })
 
@@ -59,24 +66,43 @@ const displayAddedPost = (newPost) =>{
     `<div id="post">
             <p>${newPost.content}</p>
             <span class="options">
-                <i class="fas fa-edit"></i>
+                <i id="editBtn" class="fas fa-edit"></i>
                 <i class="fas fa-trash-alt"></i>
             </span>
     </div>`
 
     posts.innerHTML += addedPost
     
-    prepare(addedPost)
+    // prepare(addedPost)
+
+    // This is where I'll add the eventlistener to test if my idea will work.
+    // Adding the event listener directly to the class name results in a error. I'll assign an id to the edit button to see how it works.
+    // Assigning the id was successful, but I'm facing another problem: showModal doesn't show the modal for that specific post we want.
+    // I think we have to find the id first.
+
+    let edit = document.getElementById("editBtn")
+    console.log(edit)
+    edit.addEventListener('click', showModal(id))
 
 }
 
 // Prepare post for edit
 
-const prepare = (addedPost) =>{
+const prepare = (id, post) =>{
     // Add an event listener to the edit button
-    let edit = document.getElementsByClassName('fa-edit')
+    // let edit = document.getElementsByClassName('fa-edit')
     // console.log(edit)
-    edit.addEventListener('click', showModal())
+    // showModal()
+}
+
+// function to make post editable
+
+// I'm making this function to separate the prepare functionality with making the edit button clickable..
+// Before, the prepare function could do both, which included showing the modal when invoking the prepare function
+
+function makePostEditable(){
+    
+    
 }
    
 
@@ -99,7 +125,7 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(updatedPost){
+function showModal(id){
     console.log('edit clicked')
     const modal = document.getElementById("myModal");
     const closeModal = modal.querySelector(".close")
@@ -108,7 +134,7 @@ function showModal(updatedPost){
     `
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>${updatedPost.content}</p>
+        <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
     </div>
     `
     modal.innerHTML += modalContent
