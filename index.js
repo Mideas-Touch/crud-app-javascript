@@ -103,6 +103,15 @@ function showModal(addedPost){
     console.log('edit clicked')
     const modal = document.getElementById("myModal");
     const closeModal = modal.querySelector(".close")
+
+    const modalContent =
+    `
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Modal content goes here.</p>
+    </div>
+    `
+    modal.innerHTML += modalContent
     // const modal =
     // `<div id="myModal" class="modal">
     //     <div class="modal-content">
