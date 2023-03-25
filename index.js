@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log("Mapping existing posts..")
 
     data.map(post =>{
+        const singlePost = document.createElement("div")
         const display =
         `<div id="post">
             <p>${post.content}</p>
@@ -28,11 +29,28 @@ document.addEventListener('DOMContentLoaded', function(){
             </span>
         </div>`
 
-        posts.innerHTML += display
+        singlePost.innerHTML = display
+
+        posts.append(singlePost)
 
         console.log(data.length + " posts found")
 
-        prepare(post)
+        // prepare(post)
+
+        // Log all existing posts to the console
+
+        console.log("Logging all existing posts")
+
+        // data.forEach(function(existingPost){
+        //     console.log(existingPost)
+        //     prepare(existingPost)
+        //     console.log(existingPost)
+        // })
+
+        data.forEach(existingPost =>{
+            prepare(existingPost)
+        
+        })
 
 
     })
@@ -116,10 +134,25 @@ const displayAddedPost = (newPost) =>{
 
 // Adding a function to get all the edit buttons
 
-const prepare = () =>{
+const prepare = (existingPost) =>{
     console.log("Inside the prepare function")
+    // existingPost.forEach(item => console.log(item))
+
+    // This looks for the first and last id to be passed on here
+    console.log(existingPost.id)
+    console.log(existingPost) 
+
     const editBtns = document.querySelectorAll("#editBtn");
     console.log(editBtns)
+
+    // Assign an id to each post
+    // Function to assign an id to each post when preparing
+
+    const assignId = (existingPost) => existingPost.forEach(postId =>{
+        existingPost.id = postId
+    })
+
+    assignId(existingPost)
 
     // Add an event listener to each button
     editBtns.forEach(function(btn){
@@ -127,9 +160,16 @@ const prepare = () =>{
         btn.addEventListener("click", function getReady(){
             // wuuhh
             console.log("Ready")
-            showModal(btn)
+            
         });
     })
+
+
+    console.log("id of current post: ", postId)
+    console.log("The post itself: ", existingPost)
+    showModal(postId)
+
+    console.log(existingPost.id)
 }
 
    
@@ -155,36 +195,61 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(addedPost){
+function showModal(postId){
     // console.log('edit clicked')
     console.log('Inside the showModal function')
     // const modal = document.getElementById("myModal");
 
-    console.log(addedPost.getAttribute("data-id"))
+    // console.log("Existing posts :", existingPost)
+    console.log("The id inside the showModal function:", postId)
 
-    // Get the post ID from the button's data-id attribute
-    let btn = this
-    const postId = this.getAttribute("data-id");
-    console.log(postId)
+    // Function to replace all this bs inside here
 
-    // Get the corresponding modal element
-    const modal = document.getElementById("myModal");
+    // post.forEach(function(editablePost){
+        const modal = document.createElement("div");
+        const modalContent = document.createElement("div")
+        modalContent.innerHTML =
+        `
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content heree</texarea>
+        </div>
+        `
+        
+        modal.append(modalContent)
 
-    // const closeModal = modal.querySelector(".close")
-
-    const modalContent =
-    `
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
-    </div>
-    `
-    modal.innerHTML += modalContent
+        console.log(modal)
  
 
-    // Show the modal
-    modal.style.display = "block";
-    console.log('end of the function')
+        // Show the modal
+        modal.style.display = "block";
+
+
+    // })
+
+    // // Get the corresponding modal element
+    // const modal = document.getElementById("myModal");
+
+    // // console.log(modal)
+    // // const closeModal = modal.querySelector(".close")
+
+    // const modalContent = document.createElement("div")
+    // modalContent.innerHTML =
+    // `
+    // <div class="modal-content">
+    //     <span class="close">&times;</span>
+    //     <texarea name="editPost" id="editPost" cols="5" rows="7"></texarea>
+    // </div>
+    // `
+
+    // modal.append(modalContent)
+
+    // console.log(modal)
+ 
+
+    // // Show the modal
+    // modal.style.display = "block";
+    // console.log('end of the function')
 
 }
 
