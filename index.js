@@ -127,7 +127,7 @@ const prepare = () =>{
         btn.addEventListener("click", function getReady(){
             // wuuhh
             console.log("Ready")
-            showModal()
+            showModal(btn)
         });
     })
 }
