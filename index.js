@@ -99,7 +99,7 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(addedPost){
+function showModal(updatedPost){
     console.log('edit clicked')
     const modal = document.getElementById("myModal");
     const closeModal = modal.querySelector(".close")
@@ -108,7 +108,7 @@ function showModal(addedPost){
     `
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Modal content goes here.</p>
+        <p>${updatedPost.content}</p>
     </div>
     `
     modal.innerHTML += modalContent
