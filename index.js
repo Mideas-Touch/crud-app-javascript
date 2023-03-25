@@ -82,7 +82,7 @@ const displayAddedPost = (newPost) =>{
 
     let edit = document.getElementById("editBtn")
     console.log(edit)
-    // edit.addEventListener('click', showModal(findIndex(addedPost)))
+    edit.addEventListener('click', showModal(findIndex(newPost.id)))
     console.log(findIndex(newPost.id))
 
 }
@@ -131,26 +131,23 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(id){
+function showModal(editablePostIndex){
     console.log('edit clicked')
     const modal = document.getElementById("myModal");
     const closeModal = modal.querySelector(".close")
 
-    const modalContent =
-    `
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
-    </div>
-    `
+    if (editablePostIndex){
+        const modalContent =
+        `
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
+        </div>
+        `
     modal.innerHTML += modalContent
-    // const modal =
-    // `<div id="myModal" class="modal">
-    //     <div class="modal-content">
-    //         <span class="close">&times;</span>
-    //         <p>Modal content goes here.</p>
-    //     </div>
-    // </div>`
+    }
+
+    
 
     // Show the modal
     modal.style.display = "block";
