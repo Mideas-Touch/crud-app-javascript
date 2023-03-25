@@ -1,6 +1,6 @@
 let button = document.getElementById('btn');
 let posts = document.getElementById('posts-list')
-let edit = document.getElementsByClassName('fa-edit')
+// let edit = document.getElementsByClassName('fa-edit')
 let deletePost = document.getElementsByClassName('fa-trash-alt')
 
 
@@ -65,6 +65,12 @@ const displayAddedPost = (newPost) =>{
     </div>`
 
     posts.innerHTML += addedPost
+    
+    // Add an event listener to the edit button
+    let edit = document.getElementsByClassName('fa-edit')
+    // console.log(edit)
+    edit.addEventListener('click', showModal())
+
 }
    
 
@@ -75,8 +81,23 @@ function update(id, updatedPost){
     data[index] = {...data[index], ...updatedPost};
     // console.log(data[index])
     // console.log(edit)
-    edit.addEventListener('click', showModal())
+    // edit.addEventListener('click', showModal())
 
+}
+
+function showModal(){
+    console.log('edit clicked')
+    const modal =
+    `<div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Modal content goes here.</p>
+        </div>
+    </div>`
+
+    // Show the modal
+    modal.style.display = "block";
+    console.log('end of the function')
 }
 
 
