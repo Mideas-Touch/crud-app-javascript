@@ -66,11 +66,17 @@ const displayAddedPost = (newPost) =>{
 
     posts.innerHTML += addedPost
     
+    prepare(addedPost)
+
+}
+
+// Prepare post for edit
+
+const prepare = (addedPost) =>{
     // Add an event listener to the edit button
     let edit = document.getElementsByClassName('fa-edit')
     // console.log(edit)
     edit.addEventListener('click', showModal())
-
 }
    
 
@@ -85,7 +91,15 @@ function update(id, updatedPost){
 
 }
 
-function showModal(){
+// Hide the modal
+
+function hideModal(){
+    const modal = document.getElementById("myModal");
+    const closeModal = modal.querySelector(".close")
+    modal.style.display = "none";
+}
+
+function showModal(addedPost){
     console.log('edit clicked')
     const modal =
     `<div id="myModal" class="modal">
@@ -96,8 +110,10 @@ function showModal(){
     </div>`
 
     // Show the modal
-    modal.style.display = "block";
-    console.log('end of the function')
+    // modal.style.display = "block";
+    // console.log('end of the function')
+
+    addedPost.innerHTML += modal
 }
 
 
