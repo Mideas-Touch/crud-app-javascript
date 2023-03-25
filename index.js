@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
         posts.innerHTML += display
 
+        prepare(post)
+
 
     })
 })
@@ -85,6 +87,8 @@ const displayAddedPost = (newPost) =>{
     // edit.addEventListener('click', showModal(findIndex(newPost.id)))
     // console.log(findIndex(newPost.id))
 
+    prepare(addedPost)
+
 }
 
 // const findIndex = (id) =>{
@@ -107,11 +111,12 @@ const displayAddedPost = (newPost) =>{
 
 function prepare(){
     const editBtns = document.querySelectorAll("#editBtn");
+    console.log(editBtns)
 
     // Add an event listener to each button
-    editBtns.forEach(function(btn){
-        btn.addEventListener("click", showModal());
-    })
+    // editBtns.forEach(function(btn){
+    //     btn.addEventListener("click", showModal());
+    // })
 }
 
    
@@ -132,7 +137,7 @@ function hideModal(){
 
     // Get the corresponding modal element
     const modal = document.getElementById("myModal" + postId);
-    
+
     const closeModal = modal.querySelector(".close")
     modal.style.display = "none";
 }
