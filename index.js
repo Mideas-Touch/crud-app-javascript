@@ -80,17 +80,17 @@ const displayAddedPost = (newPost) =>{
     // Assigning the id was successful, but I'm facing another problem: showModal doesn't show the modal for that specific post we want.
     // I think we have to find the id first.
 
-    let edit = document.getElementById("editBtn")
-    console.log(edit)
-    edit.addEventListener('click', showModal(findIndex(newPost.id)))
-    console.log(findIndex(newPost.id))
+    // let edit = document.getElementById("editBtn")
+    // console.log(edit)
+    // edit.addEventListener('click', showModal(findIndex(newPost.id)))
+    // console.log(findIndex(newPost.id))
 
 }
 
-const findIndex = (id) =>{
-    let editablePostIndex = data.findIndex(item => item.id === id);
-    return editablePostIndex;
-}
+// const findIndex = (id) =>{
+//     let editablePostIndex = data.findIndex(item => item.id === id);
+//     return editablePostIndex;
+// }
 
 // Prepare post for edit
 
@@ -109,6 +109,9 @@ function prepare(){
     const editBtns = document.querySelectorAll("#editBtn");
 
     // Add an event listener to each button
+    editBtns.forEach(function(btn){
+        btn.addEventListener("click", showModal());
+    })
 }
 
    
@@ -124,7 +127,12 @@ function update(id, updatedPost){
 // Hide the modal
 
 function hideModal(){
-    const modal = document.getElementById("myModal");
+    // Get the post ID from the button's data-id attribute
+    const postId = this.getAttribute("data-id");
+
+    // Get the corresponding modal element
+    const modal = document.getElementById("myModal" + postId);
+    
     const closeModal = modal.querySelector(".close")
     modal.style.display = "none";
 }
