@@ -123,7 +123,12 @@ const prepare = () =>{
 
     // Add an event listener to each button
     editBtns.forEach(function(btn){
-        btn.addEventListener("click", showModal(btn));
+        // btn.addEventListener("click", showModal(btn));
+        btn.addEventListener("click", function getReady(){
+            // wuuhh
+            console.log("Ready")
+            showModal()
+        });
     })
 }
 
