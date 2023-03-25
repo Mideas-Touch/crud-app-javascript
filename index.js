@@ -101,19 +101,21 @@ function hideModal(){
 
 function showModal(addedPost){
     console.log('edit clicked')
-    const modal =
-    `<div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Modal content goes here.</p>
-        </div>
-    </div>`
+    const modal = document.getElementById("myModal");
+    const closeModal = modal.querySelector(".close")
+    // const modal =
+    // `<div id="myModal" class="modal">
+    //     <div class="modal-content">
+    //         <span class="close">&times;</span>
+    //         <p>Modal content goes here.</p>
+    //     </div>
+    // </div>`
 
     // Show the modal
-    // modal.style.display = "block";
-    // console.log('end of the function')
+    modal.style.display = "block";
+    console.log('end of the function')
 
-    addedPost.innerHTML += modal
+    // addedPost.innerHTML += modal
 }
 
 
