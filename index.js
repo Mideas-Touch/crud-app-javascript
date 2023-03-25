@@ -101,25 +101,13 @@ const prepare = (id, post) =>{
     // showModal()
 }
 
-// function to make post editable
-
-// I'm making this function to separate the prepare functionality with making the edit button clickable..
-// Before, the prepare function could do both, which included showing the modal when invoking the prepare function
-
-function makePostEditable(){
-    
-    
-}
    
-
 // Update a post
 
 function update(id, updatedPost){
     const index = data.findIndex(item => item.id === id);
     data[index] = {...data[index], ...updatedPost};
     // console.log(data[index])
-    // console.log(edit)
-    // edit.addEventListener('click', showModal())
 
 }
 
@@ -144,7 +132,7 @@ function showModal(editablePostIndex){
             <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
         </div>
         `
-    modal.innerHTML += modalContent
+        modal.innerHTML += modalContent
     }
 
     
@@ -153,7 +141,6 @@ function showModal(editablePostIndex){
     modal.style.display = "block";
     console.log('end of the function')
 
-    // addedPost.innerHTML += modal
 }
 
 
