@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
         `<div id="post">
             <p>${post.content}</p>
             <span class="options">
-                <i class="fas fa-edit"></i>
+                <i id="editBtn" class="fas fa-edit"></i>
                 <i class="fas fa-trash-alt"></i>
             </span>
         </div>`
@@ -94,11 +94,21 @@ const findIndex = (id) =>{
 
 // Prepare post for edit
 
-const prepare = (id, post) =>{
-    // Add an event listener to the edit button
-    // let edit = document.getElementsByClassName('fa-edit')
-    // console.log(edit)
-    // showModal()
+// const prepare = (id, post) =>{
+//     // Add an event listener to the edit button
+//     // let edit = document.getElementsByClassName('fa-edit')
+//     // console.log(edit)
+//     // showModal()
+// }
+
+
+
+// Adding a function to get all the edit buttons
+
+function prepare(){
+    const editBtns = document.querySelectorAll("#editBtn");
+
+    // Add an event listener to each button
 }
 
    
