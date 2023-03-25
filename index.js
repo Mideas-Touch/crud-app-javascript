@@ -82,8 +82,14 @@ const displayAddedPost = (newPost) =>{
 
     let edit = document.getElementById("editBtn")
     console.log(edit)
-    edit.addEventListener('click', showModal(id))
+    // edit.addEventListener('click', showModal(findIndex(addedPost)))
+    console.log(findIndex(newPost.id))
 
+}
+
+const findIndex = (id) =>{
+    let editablePostIndex = data.findIndex(item => item.id === id);
+    return editablePostIndex;
 }
 
 // Prepare post for edit
