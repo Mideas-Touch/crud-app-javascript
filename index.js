@@ -155,32 +155,32 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(btn){
+function showModal(addedPost){
     // console.log('edit clicked')
     console.log('Inside the showModal function')
     // const modal = document.getElementById("myModal");
 
+    console.log(addedPost.getAttribute("data-id"))
+
     // Get the post ID from the button's data-id attribute
-    const postId = btn.getAttribute("data-id");
+    let btn = this
+    const postId = this.getAttribute("data-id");
     console.log(postId)
 
     // Get the corresponding modal element
-    const modal = document.getElementById("myModal" + postId);
+    const modal = document.getElementById("myModal");
 
     // const closeModal = modal.querySelector(".close")
 
-    if (editablePostIndex){
-        const modalContent =
-        `
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
-        </div>
-        `
-        modal.innerHTML += modalContent
-    }
-
-    
+    const modalContent =
+    `
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content herer</texarea>
+    </div>
+    `
+    modal.innerHTML += modalContent
+ 
 
     // Show the modal
     modal.style.display = "block";
