@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     data.map(post =>{
         const singlePost = document.createElement("div")
+        const postId = post.id
+        const setAtr = singlePost.setAttribute("data-id", postId);
+
         const display =
         `<div id="post">
             <p>${post.content}</p>
@@ -39,6 +42,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // Log all existing posts to the console
 
+        console.log(postId)
+        console.log(singlePost.getAttribute("data-id"))
+
         console.log("Logging all existing posts")
 
         // data.forEach(function(existingPost){
@@ -47,8 +53,10 @@ document.addEventListener('DOMContentLoaded', function(){
         //     console.log(existingPost)
         // })
 
-        data.forEach(existingPost =>{
-            prepare(existingPost)
+        data.forEach(singlePost =>{
+            // prepare(existingPost)
+            console.log(singlePost)
+            prepare(singlePost)
         
         })
 
@@ -137,22 +145,22 @@ const displayAddedPost = (newPost) =>{
 const prepare = (existingPost) =>{
     console.log("Inside the prepare function")
     // existingPost.forEach(item => console.log(item))
+    
 
     // This looks for the first and last id to be passed on here
-    console.log(existingPost.id)
-    console.log(existingPost) 
-
+    // existingPost.forEach(console.log(existingPost.id))
+    
     const editBtns = document.querySelectorAll("#editBtn");
     console.log(editBtns)
 
     // Assign an id to each post
     // Function to assign an id to each post when preparing
 
-    const assignId = (existingPost) => existingPost.forEach(postId =>{
-        existingPost.id = postId
-    })
+    // const assignId = (existingPost) => existingPost.forEach(postId =>{
+    //     existingPost.id = postId
+    // })
 
-    assignId(existingPost)
+    // assignId(existingPost)
 
     // Add an event listener to each button
     editBtns.forEach(function(btn){
