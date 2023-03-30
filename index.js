@@ -47,18 +47,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
         console.log("Logging all existing posts")
 
-        // data.forEach(function(existingPost){
-        //     console.log(existingPost)
-        //     prepare(existingPost)
-        //     console.log(existingPost)
-        // })
 
-        data.forEach(singlePost =>{
-            // prepare(existingPost)
-            console.log(singlePost)
-            prepare(singlePost)
-        
-        })
+        prepare(singlePost)
 
 
     })
@@ -124,26 +114,23 @@ const displayAddedPost = (newPost) =>{
 
 }
 
-// const findIndex = (id) =>{
-//     let editablePostIndex = data.findIndex(item => item.id === id);
-//     return editablePostIndex;
-// }
-
-// Prepare post for edit
-
-// const prepare = (id, post) =>{
-//     // Add an event listener to the edit button
-//     // let edit = document.getElementsByClassName('fa-edit')
-//     // console.log(edit)
-//     // showModal()
-// }
 
 
 
 // Adding a function to get all the edit buttons
 
-const prepare = (existingPost) =>{
+const prepare = (singlePost) =>{
     console.log("Inside the prepare function")
+
+    function logPost(){
+        singlePost.forEach(post => console.log(post.getAttribute("data-id")))
+        // console.log(singlePost.getAttribute("data-id"))
+    }
+
+
+    logPost(singlePost)
+
+    
     // existingPost.forEach(item => console.log(item))
     
 
@@ -153,14 +140,6 @@ const prepare = (existingPost) =>{
     const editBtns = document.querySelectorAll("#editBtn");
     console.log(editBtns)
 
-    // Assign an id to each post
-    // Function to assign an id to each post when preparing
-
-    // const assignId = (existingPost) => existingPost.forEach(postId =>{
-    //     existingPost.id = postId
-    // })
-
-    // assignId(existingPost)
 
     // Add an event listener to each button
     editBtns.forEach(function(btn){
@@ -172,23 +151,8 @@ const prepare = (existingPost) =>{
         });
     })
 
-
-    console.log("id of current post: ", postId)
-    console.log("The post itself: ", existingPost)
-    showModal(postId)
-
-    console.log(existingPost.id)
 }
 
-   
-// Update a post
-
-function update(id, updatedPost){
-    const index = data.findIndex(item => item.id === id);
-    data[index] = {...data[index], ...updatedPost};
-    // console.log(data[index])
-
-}
 
 // Hide the modal
 
@@ -233,36 +197,23 @@ function showModal(postId){
         modal.style.display = "block";
 
 
-    // })
-
-    // // Get the corresponding modal element
-    // const modal = document.getElementById("myModal");
-
-    // // console.log(modal)
-    // // const closeModal = modal.querySelector(".close")
-
-    // const modalContent = document.createElement("div")
-    // modalContent.innerHTML =
-    // `
-    // <div class="modal-content">
-    //     <span class="close">&times;</span>
-    //     <texarea name="editPost" id="editPost" cols="5" rows="7"></texarea>
-    // </div>
-    // `
-
-    // modal.append(modalContent)
-
-    // console.log(modal)
- 
-
-    // // Show the modal
-    // modal.style.display = "block";
-    // console.log('end of the function')
-
 }
 
 
 
+// Might use these later
+
+// const findIndex = (id) =>{
+//     let editablePostIndex = data.findIndex(item => item.id === id);
+//     return editablePostIndex;
+// }
 
 
+// // Update a post
 
+// function update(id, updatedPost){
+//     const index = data.findIndex(item => item.id === id);
+//     data[index] = {...data[index], ...updatedPost};
+//     // console.log(data[index])
+
+// }
