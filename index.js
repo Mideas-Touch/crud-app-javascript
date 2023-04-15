@@ -121,11 +121,14 @@ const displayAddedPost = (newPost) =>{
 
 const prepare = (singlePost) =>{
     console.log("Inside the prepare function")
+    console.log(singlePost)
 
-    function logPost(){
-        singlePost.forEach(post => console.log(post.getAttribute("data-id")))
-        // console.log(singlePost.getAttribute("data-id"))
-    }
+    const logPost = () => function(singlePost){singlePost.forEach(post => console.log(post))}
+
+    // function logPost(){
+    //     singlePost.forEach(post => console.log(post.getAttribute("data-id")))
+    //     // console.log(singlePost.getAttribute("data-id"))
+    // }
 
 
     logPost(singlePost)
@@ -217,3 +220,12 @@ function showModal(postId){
 //     // console.log(data[index])
 
 // }
+
+
+// SUMMARY
+
+//* 04/15/23
+
+// So I've been struggling with "...forEach is not a function" error.
+// Found a workaround to this by passing another function inside the main function.
+// Next up: Finding a way to integrate all this with the modal functions.
