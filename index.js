@@ -123,7 +123,7 @@ const prepare = (singlePost) =>{
     console.log("Inside the prepare function")
     console.log(singlePost)
 
-    const logPost = () => function(singlePost){singlePost.forEach(post => console.log(post))}
+    const showPost = () => function(singlePost){singlePost.forEach(post => showModal(post))}
 
     // function logPost(){
     //     singlePost.forEach(post => console.log(post.getAttribute("data-id")))
@@ -131,7 +131,7 @@ const prepare = (singlePost) =>{
     // }
 
 
-    logPost(singlePost)
+    // showPost(singlePost)
 
     
     // existingPost.forEach(item => console.log(item))
@@ -147,9 +147,8 @@ const prepare = (singlePost) =>{
     // Add an event listener to each button
     editBtns.forEach(function(btn){
         // btn.addEventListener("click", showModal(btn));
-        btn.addEventListener("click", function getReady(){
-            // wuuhh
-            console.log("Ready")
+        btn.addEventListener("click", function(){
+            showPost(singlePost)
             
         });
     })
@@ -170,13 +169,13 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(postId){
+function showModal(){
     // console.log('edit clicked')
     console.log('Inside the showModal function')
     // const modal = document.getElementById("myModal");
 
     // console.log("Existing posts :", existingPost)
-    console.log("The id inside the showModal function:", postId)
+    console.log(post)
 
     // Function to replace all this bs inside here
 
