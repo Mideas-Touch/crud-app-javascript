@@ -123,7 +123,7 @@ const prepare = (singlePost) =>{
     console.log("Inside the prepare function")
     console.log(singlePost)
 
-    const showPost = () => function(singlePost){singlePost.forEach(post => showModal(post))}
+    // const showPost = () =>{singlePost => showModal(singlePost)}
 
     // function logPost(){
     //     singlePost.forEach(post => console.log(post.getAttribute("data-id")))
@@ -148,7 +148,7 @@ const prepare = (singlePost) =>{
     editBtns.forEach(function(btn){
         // btn.addEventListener("click", showModal(btn));
         btn.addEventListener("click", function(){
-            showPost(singlePost)
+            showModal(singlePost)
             
         });
     })
@@ -169,7 +169,7 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(){
+function showModal(post){
     // console.log('edit clicked')
     console.log('Inside the showModal function')
     // const modal = document.getElementById("myModal");
@@ -180,6 +180,7 @@ function showModal(){
     // Function to replace all this bs inside here
 
     // post.forEach(function(editablePost){
+
         const modal = document.createElement("div");
         const modalContent = document.createElement("div")
         modalContent.innerHTML =
@@ -191,8 +192,11 @@ function showModal(){
         `
         
         modal.append(modalContent)
+    
 
-        console.log(modal)
+        post.innerHTML += modal
+
+        // console.log(modal)
  
 
         // Show the modal
@@ -200,6 +204,7 @@ function showModal(){
 
 
 }
+
 
 
 
