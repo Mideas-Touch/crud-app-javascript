@@ -187,16 +187,16 @@ function showModal(post){
         `
         <div class="modal-content">
             <span class="close">&times;</span>
-            <texarea name="editPost" id="editPost" cols="5" rows="7">Modal content heree</texarea>
+            <textarea name="editPost" id="editPost" cols="25" rows="2"></textarea>
         </div>
         `
         
         modal.append(modalContent)
     
 
-        post.innerHTML += modal
+        post.append(modal)
 
-        // console.log(modal)
+        console.log(post)
  
 
         // Show the modal

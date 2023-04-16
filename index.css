@@ -11,13 +11,59 @@ h1{
 }
 
 .container {
+  width: 100%;
+  padding: .5rem;
   gap: 50px;
 }
 
-#posts-list {
-  width: 400px;
+
+.right {
+  margin-top: .5rem;
+  padding: 0.5rem;
+  width: 90%;
+  /* background-color: chocolate; */
+}
+
+#posts-list{
+  width: 100%;
 }
 
 i {
   cursor: pointer;
+}
+
+/* #posts-box{
+  background-color: rgb(107, 104, 104);
+} */
+
+#myModal{
+  margin-top: .8rem;
+  position: relative;
+  background-color: brown;
+}
+
+.close{
+  position: absolute;
+  left: 90%;
+}
+
+@media screen and (min-width: 800px){
+  .right{
+    background-color: darkred;
+  }
+
+  .close{
+    position: absolute;
+    left: 57%;
+  }
+
+  #editPost{
+    columns: 10;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .right{
+    background-color: chocolate;
+  }
 }
