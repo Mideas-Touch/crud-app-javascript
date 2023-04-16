@@ -41,13 +41,19 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log(postId)
         console.log(singlePost.getAttribute("data-id"))
 
-        console.log("Logging all existing posts")
+
+        
+
+
+
 
 
         prepare(singlePost)
 
 
     })
+
+
 })
 
 
@@ -113,13 +119,14 @@ const prepare = (singlePost) =>{
     // Add an event listener to each button
     editBtns.forEach(function(btn){
         // btn.addEventListener("click", showModal(btn));
-        btn.addEventListener("click", function(){
-            showModal(singlePost)
-            
-        });
+        btn.addEventListener("click", function(){showPost(singlePost)});
     })
 
-}
+    function showPost(post){
+        console.log(post)
+        
+    }
+} 
 
 
 // Hide the modal
@@ -138,6 +145,13 @@ function hideModal(){
 function showModal(post){
     // console.log('edit clicked')
     console.log('Inside the showModal function')
+
+
+    const postId = post.id
+    const getAtr = post.getAttribute("data-id");
+    post.id = getAtr
+    console.log(post.id)
+    
     // const modal = document.getElementById("myModal");
 
     // console.log("Existing posts :", existingPost)
