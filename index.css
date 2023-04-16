@@ -48,9 +48,9 @@ i {
 }
 
 @media screen and (min-width: 800px){
-  .right{
+  /* .right{
     background-color: darkred;
-  }
+  } */
 
   .close{
     position: absolute;
@@ -63,7 +63,7 @@ i {
 }
 
 @media screen and (max-width: 400px){
-  .right{
+  /* .right{
     background-color: chocolate;
-  }
+  } */
 }

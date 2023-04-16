@@ -4,10 +4,6 @@ let posts = document.getElementById('posts-list')
 let deletePost = document.getElementsByClassName('fa-trash-alt')
 
 
-// I figure that I'll have to add an event listener to every post when creating them. My initial thought was to add it here but I think I'll do it soon as we fetch existing posts.
-// I also figure that I'll have to add the event listener once a new post is created.
-// I think doing this will make the prepare and makePostEditable functions redundant.
-
 
 // Create an array with post objects
 let data = [{id: 1, content: 'First post'}, {id: 2, content: 'Second post'}]
@@ -98,19 +94,6 @@ const displayAddedPost = (newPost) =>{
 
     posts.innerHTML += addedPost
     
-    // prepare(addedPost)
-
-    // This is where I'll add the eventlistener to test if my idea will work.
-    // Adding the event listener directly to the class name results in a error. I'll assign an id to the edit button to see how it works.
-    // Assigning the id was successful, but I'm facing another problem: showModal doesn't show the modal for that specific post we want.
-    // I think we have to find the id first.
-
-    // let edit = document.getElementById("editBtn")
-    // console.log(edit)
-    // edit.addEventListener('click', showModal(findIndex(newPost.id)))
-    // console.log(findIndex(newPost.id))
-
-    prepare(addedPost)
 
 }
 
@@ -122,23 +105,6 @@ const displayAddedPost = (newPost) =>{
 const prepare = (singlePost) =>{
     console.log("Inside the prepare function")
     console.log(singlePost)
-
-    // const showPost = () =>{singlePost => showModal(singlePost)}
-
-    // function logPost(){
-    //     singlePost.forEach(post => console.log(post.getAttribute("data-id")))
-    //     // console.log(singlePost.getAttribute("data-id"))
-    // }
-
-
-    // showPost(singlePost)
-
-    
-    // existingPost.forEach(item => console.log(item))
-    
-
-    // This looks for the first and last id to be passed on here
-    // existingPost.forEach(console.log(existingPost.id))
     
     const editBtns = document.querySelectorAll("#editBtn");
     console.log(editBtns)
@@ -177,9 +143,6 @@ function showModal(post){
     // console.log("Existing posts :", existingPost)
     console.log(post)
 
-    // Function to replace all this bs inside here
-
-    // post.forEach(function(editablePost){
 
         const modal = document.createElement("div");
         const modalContent = document.createElement("div")
@@ -233,3 +196,9 @@ function showModal(post){
 // So I've been struggling with "...forEach is not a function" error.
 // Found a workaround to this by passing another function inside the main function.
 // Next up: Finding a way to integrate all this with the modal functions.
+
+// * 04/16/23
+
+// Still on the modals.
+// Planned to work on correctly displaying when toggled but instead worked on displaying it perfectly -hence the css stuff.
+// Having being relatively satisfied with the css, I'll remove all the code I don't really need here and we'll see how that goes.
