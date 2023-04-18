@@ -8,6 +8,8 @@ let deletePost = document.getElementsByClassName('fa-trash-alt')
 // Create an array with post objects
 let data = [{id: 1, content: 'First post'}, {id: 2, content: 'Second post'}]
 
+let array = []
+
 // Display existing posts on DomContentLoaded
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -32,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
         posts.append(singlePost)
 
-        console.log(data.length + " posts found")
 
         // prepare(post)
 
@@ -42,16 +43,26 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log(singlePost.getAttribute("data-id"))
 
 
-        
+        // prepare(singlePost)
 
+        // let postId;
+        // let array = []
+        // const getAtr = singlePost.getAttribute("data-id");
+        // postId = getAtr
+        // singlePost.id = postId
 
+        console.log(singlePost.id)
 
+        array.push(singlePost)
 
+        console.log("array", array)
 
-        prepare(singlePost)
+        prepare(array)
 
 
     })
+
+    
 
 
 })
@@ -108,24 +119,71 @@ const displayAddedPost = (newPost) =>{
 
 // Adding a function to get all the edit buttons
 
-const prepare = (singlePost) =>{
+const prepare = (posts) =>{
     console.log("Inside the prepare function")
-    console.log(singlePost)
+    console.log(posts)
+
+    // console.log("array", array)
+    const findidx = (posts) => {
+        console.log("posts", posts)
+        const index = posts.findIndex(item => item.id === id)
+        return index
+    }
+
+
     
     const editBtns = document.querySelectorAll("#editBtn");
-    console.log(editBtns)
 
 
     // Add an event listener to each button
     editBtns.forEach(function(btn){
         // btn.addEventListener("click", showModal(btn));
-        btn.addEventListener("click", function(){showPost(singlePost)});
+        btn.addEventListener("click", function(){
+    
+
+        findidx()
+        
+        // const index = posts.findIndex(item => item.id === id);
+
+
+        const modal = document.createElement("div");
+        const modalContent = document.createElement("div")
+        modalContent.innerHTML =
+        `
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <textarea name="editPost" id="editPost" cols="25" rows="2"></textarea>
+        </div>
+        `
+        
+        modal.append(modalContent)
+
+        // function update(id, updatedPost){
+        //     const index = data.findIndex(item => item.id === id);
+        //     data[index] = {...data[index], ...updatedPost};
+        //     // console.log(data[index])
+        
+        // }
+
+        // array.forEach(post =>{
+        //     post.append(modal)
+        //     console.log(post)
+        // })
+    
+
+
+        // Show the modal
+        // modal.remove()
+        modal.style.display = "block";
+        console.log(this)
+        });
     })
 
     function showPost(post){
         console.log(post)
         
     }
+
 } 
 
 
@@ -142,45 +200,45 @@ function hideModal(){
     modal.style.display = "none";
 }
 
-function showModal(post){
-    // console.log('edit clicked')
-    console.log('Inside the showModal function')
+// function showModal(post){
+//     // console.log('edit clicked')
+//     console.log('Inside the showModal function')
 
 
-    const postId = post.id
-    const getAtr = post.getAttribute("data-id");
-    post.id = getAtr
-    console.log(post.id)
+//     let postId;
+//     const getAtr = post.getAttribute("data-id");
+//     postId = getAtr
+
     
-    // const modal = document.getElementById("myModal");
+//     // const modal = document.getElementById("myModal");
 
-    // console.log("Existing posts :", existingPost)
-    console.log(post)
+//     // console.log("Existing posts :", existingPost)
+//     console.log(post)
 
 
-        const modal = document.createElement("div");
-        const modalContent = document.createElement("div")
-        modalContent.innerHTML =
-        `
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <textarea name="editPost" id="editPost" cols="25" rows="2"></textarea>
-        </div>
-        `
+//         const modal = document.createElement("div");
+//         const modalContent = document.createElement("div")
+//         modalContent.innerHTML =
+//         `
+//         <div class="modal-content">
+//             <span class="close">&times;</span>
+//             <textarea name="editPost" id="editPost" cols="25" rows="2"></textarea>
+//         </div>
+//         `
         
-        modal.append(modalContent)
+//         modal.append(modalContent)
     
 
-        post.append(modal)
+//         post.append(modal)
 
-        console.log(post)
+//         console.log(post)
  
 
-        // Show the modal
-        modal.style.display = "block";
+//         // Show the modal
+//         modal.style.display = "block";
 
 
-}
+// }
 
 
 
@@ -216,3 +274,10 @@ function showModal(post){
 // Still on the modals.
 // Planned to work on correctly displaying when toggled but instead worked on displaying it perfectly -hence the css stuff.
 // Having being relatively satisfied with the css, I'll remove all the code I don't really need here and we'll see how that goes.
+
+// * 04/18/23
+
+// Still trying to find the id when post is clicked.
+// I've defined a function findidx that will be invoked every time a specific post is clicked.
+// I also added an array, array to store processed posts. I plan to use this array together with the said function to find a specific post.
+// I'm currently getting a Uncaught TypeError: Cannot read properties of undefined (reading 'findIndex').
